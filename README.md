@@ -16,7 +16,7 @@ import (
 	"github.com/golang-migrate/migrate"
 )
 
-func makeMigrate(connection string, version int) (*migrate.Migrate, error) {
+func makeMigrate(connection string) (*migrate.Migrate, error) {
 	box := packr.NewBox("./path/to/migration/steps")
 	driver, err := packrdriver.WithInstance(box)
 	if err != nil {
