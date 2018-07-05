@@ -1,7 +1,8 @@
 # packr-source-driver
 
-A [golang-migrate/migrate](https://github.com/golang-migrate/migrate) driver
-for [gobuffalo/packr](https://github.com/gobuffalo/packr) based projects.
+Use [gobuffalo/packr](https://github.com/gobuffalo/packr)
+to bundle database migrations in the final binary and use them
+as a source to [golang-migrate/migrate](https://github.com/golang-migrate/migrate).
 
 ## Usage
 
