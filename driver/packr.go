@@ -7,7 +7,7 @@ import (
 	"sort"
 
 	"github.com/gobuffalo/packr"
-	"github.com/golang-migrate/migrate/source"
+	"github.com/golang-migrate/migrate/v4/source"
 )
 
 func init() {
