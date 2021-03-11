@@ -1,4 +1,4 @@
-module github.com/packr-source-driver
+module github.com/fiskeben/packr-source-driver
 
 go 1.15
 
