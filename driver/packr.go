@@ -1,8 +1,10 @@
 package driver
 
 import (
+	"bytes"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"os"
 	"sort"
 
@@ -101,11 +103,11 @@ func (d *packrDriver) ReadUp(version uint) (r io.ReadCloser, identifier string, 
 		return nil, "", os.ErrNotExist
 	}
 
-	data, err := d.box.Open(m.Raw)
+	data, err := d.box.Find(m.Raw)
 	if err != nil {
 		return nil, "", os.ErrExist
 	}
-	return data, m.Identifier, nil
+	return ioutil.NopCloser(bytes.NewReader(data)), m.Identifier, nil
 }
 
 // ReadDown returns the DOWN migration body and an identifier that helps
@@ -117,11 +119,11 @@ func (d *packrDriver) ReadDown(version uint) (r io.ReadCloser, identifier string
 	if !ok {
 		return nil, "", os.ErrNotExist
 	}
-	data, err := d.box.Open(m.Raw)
+	data, err := d.box.Find(m.Raw)
 	if err != nil {
 		return nil, "", os.ErrExist
 	}
-	return data, m.Identifier, nil
+	return ioutil.NopCloser(bytes.NewReader(data)), m.Identifier, nil
 }
 
 func (d *packrDriver) prepare() error {
